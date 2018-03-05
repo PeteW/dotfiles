@@ -1,0 +1,30 @@
+[diff]
+        tool = bc3
+[difftool]
+        prompt = false
+[difftool "bc3"]
+        cmd = BComp.exe $LOCAL $REMOTE
+[merge]
+        tool = bc3
+	defaultToUpstream = true
+[mergetool]
+        prompt = false
+        keepBackup = false
+[mergetool "bc3"]
+        cmd = BComp.exe -automerge -ignoreunimportant -reviewconflicts $LOCAL $REMOTE $BASE $MERGED
+        trustExitCode = true
+[user]
+	name = Pete W
+	email = talktopete@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[credential]
+	helper = manager
+[push]
+	default = matching
+[core]
+	editor = vim
+[gc]
+	autoDetach = false
