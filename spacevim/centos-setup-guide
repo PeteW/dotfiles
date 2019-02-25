@@ -1,0 +1,52 @@
+sudo yum install -y wget bzip2 git gcc kernel-devel make ncurses-devel
+
+wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+tar -xvzf libevent-2.0.21-stable.tar.gz
+cd libevent-2.0.21-stable
+./configure --prefix=/usr/local
+make
+sudo make install
+cd
+
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+tar -zxvf tmux-2.8.tar.gz
+cd tmux-2.8
+LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/usr/local
+make
+sudo make install
+cd
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sudo bash Miniconda3-latest-Linux-x86_64.sh
+sudo chown -R centos:centos /opt/miniconda3/
+/opt/miniconda3/bin/conda create -p /opt/miniconda3/envs/zappalab python=3
+source /opt/miniconda3/bin/activate zappalab
+cd /opt/
+sudo mkdir projects
+sudo chown centos:centos projects/
+cd projects/
+git clone https://github.com/PeteW/Zappa.git
+cd /opt/projects/
+
+
+<SUDO SU>
+
+yum remove vim-minimal
+yum remove vim-enhanced
+yum install sudo
+yum install gcc-c++ ncurses-devel ruby ruby-devel lua lua-devel luajit luajit-devel ctags python python-devel python3 python3-devel tcl-devel perl perl-devel perl-ExtUtils-ParseXS perl-ExtUtils-XSpp perl-ExtUtils-CBuilder perl-ExtUtils-Embed cscope gtk3-devel libSM-devel libXt-devel libXpm-devel libappstream-glib libacl-devel gpm-devel
+yum install epel-release
+yum install yum-utils
+yum install https://centos7.iuscommunity.org/ius-release.rpm
+yum install python36u
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+ln -s /usr/bin/python3.6 /usr/bin/python3
+which python3.6
+which python3
+ln -s /bin/python3.6 python3
+git clone https://github.com/vim/vim.git
+cd vim/
+./configure --with-features=huge  --enable-pythoninterp=yes  --enable-python3interp=yes  --enable-perlinterp=yes  --disable-tclinterp  --with-x=yes  --enable-gui=gtk3 --enable-multibyte  --enable-cscope  --with-tlib=ncurses --enable-fail-if-missing --disable-darwin --enable-rubyinterp=yes --enable-terminal  --enable-fontset --with-luajit --with-python3-command=python3 --enable-gtk3-check
+make
+make install
+ln -s /usr/local/bin/vim /usr/bin/vim
