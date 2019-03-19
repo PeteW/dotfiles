@@ -26,6 +26,9 @@ enable_statusline_display_mode = false
 tab_width = 4
 bootstrap_before = 'myspacevim#before'
 bootstrap_after = 'myspacevim#after'
+enable_powerline_fonts = 1
+statusline_unicode_symbols = true
+enable_tabline_filetype_icon = true
 
 [[layers]]
 name = 'autocomplete'
@@ -36,10 +39,16 @@ auto-completion-tab-key-behavior = 'smart'
 name = 'colorscheme'
 
 [[layers]]
+name = 'VersionControl'
+
+[[layers]]
 name = 'git'
 
 [[layers]]
 name = 'github'
+
+[[layers]]
+name = 'lang#toml'
 
 [[layers]]
 name = 'lang#csharp'
@@ -55,14 +64,8 @@ name = 'shell'
 default_position = 'top'
 default_height = 30
 
-[[layers]]
-name = 'versioncontrol'
-
 [[custom_plugins]]
 name = 'chrisbra/csv.vim'
-
-[[custom_plugins]]
-name = 'jceb/vim-orgmode'
 
 [[custom_plugins]]
 name = 'vim-scripts/ScrollColors'
@@ -73,11 +76,10 @@ name = 'flazz/vim-colorschemes'
 [[custom_plugins]]
 name = 'vim-scripts/sqlutilities'
 
+[[custom_plugins]]
+name = 'jceb/vim-orgmode'
+
+
 #[[custom_plugins]]
 #name = 'vim-scripts/debext.vim'
 
-#[[custom_plugins]]
-#name = 'mattn/vimtweak'
-#
-#[[custom_plugins]]
-#name = 'mattn/transparency-windows-vim'

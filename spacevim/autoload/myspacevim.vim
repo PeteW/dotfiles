@@ -69,58 +69,24 @@ function! myspacevim#after() abort
     let g:neomake_python_pylint_args = ['--ignore=E501,E221,E241,E272,E251,W702,E203,E201,E202',  '--format=default', '--max-line-length=1200']
     let g:neomake_python_enabled_makers = ['pep8']
     
-    " the following combined with vimtweak enables semi transparent gvim
-    " ensure vimtweak32 and vimtweak64 dlls are loaded in c:\program files (x86)\vim\<version> dir
-    " also ensure PATH points to that same dir as well
-    if &cp || (exists('g:loaded_transparency_windows_vim') && g:loaded_transparency_windows_vim)
-      finish
-    endif
-
-    let g:loaded_transparency_windows_vim = 1
-
-    if !has('gui_running') || (!has('win32') && !has('win64'))
-      finish
-    endif
-
-    let s:dll = get(g:, 'vimtweak_dll_path', '')
-    if empty(s:dll)
-      let s:dll = get(split(globpath(&rtp, has('win64') ? 'vimtweak64.dll' : 'vimtweak32.dll'), '\n'), 0, '')
-      if empty(s:dll)
-        finish
-      endif
-    endif
-
-    function! s:Transparency(v)
-      call libcallnr(s:dll, 'SetAlpha', 255-a:v) 
-    endfunction
-
-    function! s:Install(flag)
-      augroup TransparencyWindows
-        autocmd!
-        if a:flag =~# '^\(1\|[tT]rue\|[yY]es\)$'
-          autocmd FocusGained * call s:Transparency(g:vimtweak_focus_transparency_gained_value)
-          autocmd FocusLost * call s:Transparency(50)
-        endif
-      augroup END
-    endfunction
-
+    " for transparency to work you must use mingw-gcc,
+    " gcc -shared -o vimtweak64.dll vimtweak.c
+    " then place the dll into the c:\programfiles(x86)\vim81\ directory
     command! -nargs=1 Transparency call <SID>Install(<f-args>)
-
     Transparency Yes
 endfunction
 
-"function! s:Transparency(v)
-"    let s:dll = get( "c:/vimtweak.dll")
-"    call libcallnr(s:dll, 'SetAlpha', 255-a:v) 
-"endfunction
+function! s:Transparency(v)
+    call libcallnr('vimtweak64.dll', 'SetAlpha', 255-a:v) 
+endfunction
 "
-"function! s:Install(flag)
-"    augroup TransparencyWindows
-"        autocmd!
-"        if a:flag =~# '^\(1\|[tT]rue\|[yY]es\)$'
-"            autocmd FocusGained * call s:Transparency(g:vimtweak_focus_transparency_gained_value)
-"            autocmd FocusLost * call s:Transparency(50)
-"        endif
-"    augroup END
-"endfunction
+function! s:Install(flag)
+    augroup TransparencyWindows
+        autocmd!
+        if a:flag =~# '^\(1\|[tT]rue\|[yY]es\)$'
+            autocmd FocusGained * call s:Transparency(g:vimtweak_focus_transparency_gained_value)
+            autocmd FocusLost * call s:Transparency(50)
+        endif
+    augroup END
+endfunction
 
