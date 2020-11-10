@@ -11,17 +11,20 @@
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer
-colorscheme = 'onedark'
+colorscheme = 'DarkEclipse'
+# colorscheme = 'base16-irblack'
+#colorscheme = 'one-dark'
 background = 'dark'
 # Disable guicolors in basic mode, many terminal do not support 24bit
 # true colors
+#guifont = ':h12'
+#guifont = "SauceCodePro Nerd Font Mono:h11"
 enable_guicolors = true
 # Disable statusline separator, if you want to use other value, please
 # install nerd fonts
 statusline_separator = 'arrow'
 statusline_inactive_separator = 'arrow'
 buffer_index_type = 4
-enable_tabline_filetype_icon = true
 enable_statusline_display_mode = false
 tab_width = 4
 bootstrap_before = 'myspacevim#before'
@@ -29,11 +32,15 @@ bootstrap_after = 'myspacevim#after'
 enable_powerline_fonts = 1
 statusline_unicode_symbols = true
 enable_tabline_filetype_icon = true
+relativenumber = false
 
 [[layers]]
 name = 'autocomplete'
 auto-completion-return-key-behavior = 'complete'
 auto-completion-tab-key-behavior = 'smart'
+
+[[layers]]
+name = 'ctrlp'
 
 [[layers]]
 name = 'colorscheme'
@@ -48,6 +55,9 @@ name = 'git'
 name = 'github'
 
 [[layers]]
+name = 'ui'
+
+[[layers]]
 name = 'lang#toml'
 
 [[layers]]
@@ -55,6 +65,9 @@ name = 'lang#csharp'
 
 [[layers]]
 name = 'lang#javascript'
+
+[[layers]]
+name = 'lang#clojure'
 
 [[layers]]
 name = 'lang#python'
@@ -74,12 +87,18 @@ name = 'vim-scripts/ScrollColors'
 name = 'flazz/vim-colorschemes'
 
 [[custom_plugins]]
-name = 'vim-scripts/sqlutilities'
-
-[[custom_plugins]]
 name = 'jceb/vim-orgmode'
 
+[[custom_plugins]]
+name = 'vim-scripts/DrawIt'
 
-#[[custom_plugins]]
-#name = 'vim-scripts/debext.vim'
+[[custom_plugins]]
+name = 'hashivim/vim-terraform'
+
+# [[custom_plugins]]
+# name = 'vim-scripts/dbext.vim'
+# merge = 0
+
+[[custom_plugins]]
+name = 'vim-scripts/sqlutilities'
 

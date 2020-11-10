@@ -1,6 +1,7 @@
 function! myspacevim#before() abort
     " use special font for powerline (nerd-fonts)
     let g:vimtweak_focus_transparency_gained_value = 7
+    let g:omni_sql_no_default_maps = 1
 
     " DBEXT {
         let g:dbext_default_display_cmd_line = 0
@@ -15,6 +16,8 @@ function! myspacevim#before() abort
         "exec 'DBCompleteProcedures!'
         "exec 'DBCompleteViews!'
     " }
+    let g:vimfiler_tree_opened_icon = get(g:, 'vimfiler_tree_opened_icon', '-')
+    let g:vimfiler_tree_closed_icon = get(g:, 'vimfiler_tree_closed_icon', '+')
 
     " stop bugging me with line length in python
     let g:neomake_python_pep8_maker = {
@@ -42,17 +45,20 @@ function! myspacevim#after() abort
 
     " set no relative numbering
     set nornu
+    set nu
 
     " remove audio and visual error bells and scroll bar
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
     set guioptions-=r
     set clipboard=unnamed
+    "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 11
+    "set guifont=Lucidia\ Console\ 10
 
     " colorscheme
     " let g:spacevim_colorscheme = 'base16-atelier-lakeside'
     " let g:spacevim_colorscheme = 'base16-icy'
-    let g:spacevim_colorscheme = 'base16-irblack'
+    " let g:spacevim_colorscheme = 'base16-irblack'
 
     " stop bugging me with line length in python
     let g:neomake_python_pep8_maker = {
@@ -90,3 +96,4 @@ function! s:Install(flag)
     augroup END
 endfunction
 
+let g:terraform_fmt_on_save=1
