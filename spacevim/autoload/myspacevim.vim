@@ -16,8 +16,8 @@ function! myspacevim#before() abort
         "exec 'DBCompleteProcedures!'
         "exec 'DBCompleteViews!'
     " }
-    let g:vimfiler_tree_opened_icon = get(g:, 'vimfiler_tree_opened_icon', '-')
-    let g:vimfiler_tree_closed_icon = get(g:, 'vimfiler_tree_closed_icon', '+')
+    "let g:vimfiler_tree_opened_icon = get(g:, 'vimfiler_tree_opened_icon', '-')
+    "let g:vimfiler_tree_closed_icon = get(g:, 'vimfiler_tree_closed_icon', '+')
 
     " stop bugging me with line length in python
     let g:neomake_python_pep8_maker = {
